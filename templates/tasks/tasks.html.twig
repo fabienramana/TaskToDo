@@ -10,7 +10,8 @@
             <h2>Titre : {{ task.title }}</h2>
             <h3>Description : {{ task.description }}</h3>
             <h4><span>Statut : {{ task.status }}</span></h4>
-            <h4>Créée le  {{ task.getCreatedAt() | date("d/m/Y") }}</h4>
+            <h4>Créée le  {{ task.getCreatedAt() | date("d/m/Y") }} à {{ task.getUpdatedAt() | date("H:i:s") }}</h4>
+            <h4>Modifiée le {{ task.getUpdatedAt() | date("d/m/Y") }} à {{ task.getUpdatedAt() | date("H:i:s") }}</h4>
             <a href="{{ path('update', {id: task.id }) }}">Modifier</a>
             <a href="{{ path('delete', {id: task.id }) }}">Supprimer</a>
         </div>

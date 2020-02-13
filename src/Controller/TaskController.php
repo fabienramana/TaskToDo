@@ -37,6 +37,7 @@ class TaskController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
             $task->setCreatedAt(new \Datetime("now"));
+            $task->setUpdatedAt(new \Datetime("now"));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
@@ -64,6 +65,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
+            $task->setUpdatedAt(new \Datetime("now"));
 
             $em->persist($task);
             $em->flush();
