@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to Symfony!</title>
+        <title>Tâches</title>
     </head>
     <body>
-        <h1>HELLO !</h1>
-
+        <a href="{{ path('create') }}">Créer une tâche</a>
+        {% for task in tasks %}
+        <div>
+            <h2>Titre : {{ task.title }}</h2>
+            <h3>Description : {{ task.description }}</h3>
+            <h4><span>Statut : {{ task.status }}</span></h4>
+            <h4>Créée le  {{ task.getCreatedAt() | date("d/m/Y") }}</h4>
+            <a href="{{ path('update', {id: task.id }) }}">Modifier</a>
+            <a href="{{ path('delete', {id: task.id }) }}">Supprimer</a>
+        </div>
+        <br>
+        {% endfor %}
     </body>
 </html>
